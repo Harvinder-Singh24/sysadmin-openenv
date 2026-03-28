@@ -1,0 +1,16 @@
+name: sysadmin-simulator
+version: 1.0.0
+description: A SysAdmin simulation round where an AI agent diagnoses and fixes server issues via CLI.
+tasks:
+  - id: easy_log_analysis
+    name: Find Failed Login
+    description: Parse /var/log/auth.log to find the IP address of a user who failed to login 3 times.
+    difficulty: easy
+  - id: med_config_fix
+    name: Fix Misconfigured Port
+    description: Identify a misconfigured web server port in /app/config/server.conf and restart the service.
+    difficulty: medium
+  - id: hard_cpu_hog
+    name: Kill CPU Hog
+    description: Find the Process ID (PID) of the application consuming 100% CPU and terminate it.
+    difficulty: hard

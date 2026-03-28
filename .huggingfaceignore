@@ -1,0 +1,5 @@
+.venv
+__pycache__
+workspace
+server.log
+.DS_Store
