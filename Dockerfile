@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     grep \
     sed \
-    awk \
+    gawk \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
