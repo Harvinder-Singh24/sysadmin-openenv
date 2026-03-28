@@ -79,3 +79,4 @@ The environment was evaluated using the internal `inference.py` running the `gpt
 
 ## Judging Validation
 This environment strictly adheres to the OpenEnv JSON model standard over HTTP endpoints (`/reset`, `/step`, `/state`). It meets the runtime limit requirement (the FastAPI server is highly lightweight, consuming <50MB RAM).
+ 
