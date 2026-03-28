@@ -12,6 +12,9 @@ class BaseTask:
     def setup(self, workspace: str):
         pass
 
+    def cleanup(self):
+        pass
+
     def evaluate(self, command: str, stdout: str, stderr: str, workspace: str) -> tuple[float, bool]:
         """Returns (reward, done)"""
         return 0.0, False
@@ -103,6 +106,13 @@ class HardTask(BaseTask):
         # Start the script
         p = subprocess.Popen(["bash", hog_script])
         self.pid = p.pid
+
+    def cleanup(self):
+        if hasattr(self, 'pid') and self.pid is not None:
+            try:
+                os.kill(self.pid, signal.SIGKILL)
+            except OSError:
+                pass
 
     def evaluate(self, command: str, stdout: str, stderr: str, workspace: str) -> tuple[float, bool]:
         if command.strip() == "submit done":

@@ -12,12 +12,18 @@ class SysAdminEnvironment:
         os.makedirs(self.workspace, exist_ok=True)
     
     def reset(self) -> SysObservation:
+        if self.current_task is not None and hasattr(self.current_task, "cleanup"):
+            self.current_task.cleanup()
+            
         self.current_task = get_task()
         self.step_count = 0
         
         # Cleanup workspace
         if os.path.exists(self.workspace):
-            shutil.rmtree(self.workspace)
+            try:
+                shutil.rmtree(self.workspace)
+            except OSError:
+                subprocess.run(["rm", "-rf", self.workspace])
         os.makedirs(self.workspace, exist_ok=True)
         self.current_task.setup(self.workspace)
         
