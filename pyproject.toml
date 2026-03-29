@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sysadmin-simulator"
+version = "1.0.0"
+description = "A SysAdmin simulation round where an AI agent diagnoses and fixes server issues via CLI."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Harvinder Singh"}
+]
+dependencies = [
+    "openenv-core",
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "openai",
+    "numpy",
+    "pillow",
+]
+
+[tool.setuptools]
+packages = []
+py-modules = ["environment", "inference", "models", "tasks"]
+
+[project.scripts]
+server = "server.app:main"
