@@ -10,6 +10,10 @@ app = FastAPI()
 env = SysAdminEnvironment()
 env.reset()
 
+@app.get("/")
+async def root():
+    return {"status": "ok", "message": "SysAdmin Simulator OpenEnv API is running. Endpoints: /reset, /step, /state"}
+
 @app.post("/reset", response_model=Observation)
 async def reset():
     return env.reset()
